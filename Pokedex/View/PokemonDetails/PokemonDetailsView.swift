@@ -11,7 +11,7 @@ import Kingfisher
 struct PokemonDetailsView: View {
     let pokemon: Pokemon
     let getBackgroundColor: Color
-    @State var selected = 1
+    @State var selected = 3
     
     init(pokemon: Pokemon) {
         self.pokemon = pokemon
@@ -24,7 +24,7 @@ struct PokemonDetailsView: View {
         NavigationView {
             ZStack {
                 getBackgroundColor.ignoresSafeArea()
-                Image(systemName: "car")
+                Image("PokeballBackgroundWhite")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 200)
@@ -38,40 +38,21 @@ struct PokemonDetailsView: View {
                     .padding(.bottom, -350)
                 VStack {
                     HStack {
-                        Text("poison")
-                            .foregroundColor(.white)
-                            .bold()
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 8)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color.white.opacity(0.25))
-                            )
-                            .frame(width: 120, height: 24)
-                        
+                        TypeAndIdView(text: pokemon.type)
                         Spacer()
-                        
-                        Text("#001")
-                            .foregroundColor(.white)
-                            .bold()
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 8)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color.white.opacity(0.25))
-                            )
-                            .frame(width: 120, height: 24)
-                        
+                        TypeAndIdView(text: "#\(pokemon.id)")
                     }
                     Spacer()
-                    Picker(selection: $selected, label: Text("Picker"), content: {
-                        Text("About").tag(1)
-                        Text("Evolutions").tag(2)
-                        Text("Base Stats").tag(3)
-                        Text("Moves").tag(4)
-                    })
-                    .pickerStyle(SegmentedPickerStyle())
-                    .padding(.bottom, 350)
+                    PickerView(selected: self.$selected)
+                        .padding(.bottom,20)
+                    switch selected {
+                    case 1:
+                        AboutPokemonView(valueHeight: "10", valueWeight: "30")
+                    case 2:
+                        BaseStatsPokemonView(attackValue: 65, defenseValue: 120)
+                    default:
+                        EvolutionsPokemonView()
+                    }
                     
                 }
                 KFImage(URL(string: pokemon.imageUrl))

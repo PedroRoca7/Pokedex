@@ -22,6 +22,7 @@
 		CE2F38492B5EE921005BB0CB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CE2F38482B5EE921005BB0CB /* Kingfisher */; };
 		CE2F384E2B5EFAA0005BB0CB /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F384D2B5EFAA0005BB0CB /* Color+Extensions.swift */; };
 		CE2F38512B5F097E005BB0CB /* PokemonDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F38502B5F097E005BB0CB /* PokemonDetailsView.swift */; };
+		CE5921E92B603EEB00432AF4 /* PokemonDetailsComponentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5921E82B603EEB00432AF4 /* PokemonDetailsComponentsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		CE2F38452B5ED9F7005BB0CB /* ApiPokemons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiPokemons.swift; sourceTree = "<group>"; };
 		CE2F384D2B5EFAA0005BB0CB /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		CE2F38502B5F097E005BB0CB /* PokemonDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailsView.swift; sourceTree = "<group>"; };
+		CE5921E82B603EEB00432AF4 /* PokemonDetailsComponentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailsComponentsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				CE2F38502B5F097E005BB0CB /* PokemonDetailsView.swift */,
+				CE5921E82B603EEB00432AF4 /* PokemonDetailsComponentsView.swift */,
 			);
 			path = PokemonDetails;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				CE2F383E2B5EC96D005BB0CB /* Pokemon.swift in Sources */,
 				CE2F384E2B5EFAA0005BB0CB /* Color+Extensions.swift in Sources */,
 				CE2F38102B5EB1AE005BB0CB /* InitialView.swift in Sources */,
+				CE5921E92B603EEB00432AF4 /* PokemonDetailsComponentsView.swift in Sources */,
 				CE2F380E2B5EB1AE005BB0CB /* PokedexApp.swift in Sources */,
 				CE2F38392B5EBCE6005BB0CB /* PokemonCell.swift in Sources */,
 				CE2F38512B5F097E005BB0CB /* PokemonDetailsView.swift in Sources */,

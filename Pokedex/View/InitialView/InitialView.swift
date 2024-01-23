@@ -11,17 +11,19 @@ struct InitialView: View {
     var body: some View {
         
         ZStack {
-            Color.blue
+            Color.red
                 .ignoresSafeArea()
             
             VStack {
                 Spacer()
                 
                 Text("Pokedex")
-                    .font(.system(size: 80))
-                    .bold()
+                    .font(.largeTitle)
+                    .foregroundColor(.white).bold()
                 
-                Spacer()
+                Image("PokeballBackgroundBlack")
+                    .resizable()
+                    .scaledToFit()
                 
                 Button("Play") {
 
@@ -34,6 +36,7 @@ struct InitialView: View {
                     RoundedRectangle(cornerRadius: 20)
                         .fill(Color.white.opacity(0.25))
                 )
+                Spacer()
             }
         }
     }

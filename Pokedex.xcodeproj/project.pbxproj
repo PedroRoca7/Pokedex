@@ -22,6 +22,7 @@
 		CE2F38492B5EE921005BB0CB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = CE2F38482B5EE921005BB0CB /* Kingfisher */; };
 		CE2F384E2B5EFAA0005BB0CB /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F384D2B5EFAA0005BB0CB /* Color+Extensions.swift */; };
 		CE2F38512B5F097E005BB0CB /* PokemonDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2F38502B5F097E005BB0CB /* PokemonDetailsView.swift */; };
+		CE51A4512B61C3CB007DCB98 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE51A4502B61C3CB007DCB98 /* Array+Extensions.swift */; };
 		CE5921E92B603EEB00432AF4 /* PokemonDetailsComponentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5921E82B603EEB00432AF4 /* PokemonDetailsComponentsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		CE2F38452B5ED9F7005BB0CB /* ApiPokemons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiPokemons.swift; sourceTree = "<group>"; };
 		CE2F384D2B5EFAA0005BB0CB /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		CE2F38502B5F097E005BB0CB /* PokemonDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailsView.swift; sourceTree = "<group>"; };
+		CE51A4502B61C3CB007DCB98 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		CE5921E82B603EEB00432AF4 /* PokemonDetailsComponentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailsComponentsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				CE2F384D2B5EFAA0005BB0CB /* Color+Extensions.swift */,
+				CE51A4502B61C3CB007DCB98 /* Array+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				CE2F38462B5ED9F7005BB0CB /* ApiPokemons.swift in Sources */,
 				CE2F38432B5ED5F9005BB0CB /* PokemonCellViewModel.swift in Sources */,
 				CE2F383E2B5EC96D005BB0CB /* Pokemon.swift in Sources */,
+				CE51A4512B61C3CB007DCB98 /* Array+Extensions.swift in Sources */,
 				CE2F384E2B5EFAA0005BB0CB /* Color+Extensions.swift in Sources */,
 				CE2F38102B5EB1AE005BB0CB /* InitialView.swift in Sources */,
 				CE5921E92B603EEB00432AF4 /* PokemonDetailsComponentsView.swift in Sources */,

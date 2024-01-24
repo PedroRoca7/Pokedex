@@ -11,16 +11,15 @@ import Kingfisher
 struct PokemonCell: View {
     let pokemon: Pokemon
     let getBackgroundColor: Color
-       
+    
     init(pokemon: Pokemon) {
         self.pokemon = pokemon
         self.getBackgroundColor = PokemonCellViewModel.getBackgroundColor(forType: pokemon.type)
     }
     
     var body: some View {
-        Button(action: {
-    
-        }) {
+        
+        NavigationLink(destination: PokemonDetailsView(pokemon: pokemon)) {
             ZStack {
                 VStack(alignment: .leading) {
                     Text(pokemon.name.capitalized)

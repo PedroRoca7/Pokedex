@@ -25,9 +25,7 @@ struct InitialView: View {
                     .resizable()
                     .scaledToFit()
                 
-                Button("Play") {
-
-                }
+                NavigationLink("Play", destination: PokedexView())
                 .font(.headline).bold()
                 .foregroundColor(Color.white)
                 .padding(.horizontal, 50)

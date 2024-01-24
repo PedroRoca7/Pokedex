@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Kingfisher
 
 struct PickerView : View {
     
@@ -23,15 +24,16 @@ struct PickerView : View {
 }
 
 struct AboutPokemonView : View {
-    var valueHeight: String
-    var valueWeight: String
+    var valueHeight: Int
+    var valueWeight: Int
+    var descriptionPokemon: String
     
     var body : some View {
       
         Text("Description")
             .font(.largeTitle)
         
-        Text("Bulbasaur can be seen napping in bright sunlight.There is a seed on its back. By soaking up the sun’s rays,the seed grows progressively larger.")
+        Text(descriptionPokemon)
             .foregroundColor(.gray)
             .multilineTextAlignment(.center)
             .frame(maxHeight: 150)
@@ -43,7 +45,7 @@ struct AboutPokemonView : View {
                 .padding(.leading, 40)
                 .padding(.top, 30)
             Spacer()
-            Text(valueHeight)
+            Text(String(valueHeight))
                 .padding(.trailing, 150)
                 .padding(.top, 30)
         }
@@ -53,7 +55,7 @@ struct AboutPokemonView : View {
                 .foregroundColor(.gray)
                 .padding(.leading, 40)
             Spacer()
-            Text(valueWeight)
+            Text(String(valueWeight))
                 .padding(.trailing, 150)
         }
     }
@@ -73,13 +75,13 @@ struct BaseStatsPokemonView: View {
                 .padding(.trailing, 20)
             ZStack(alignment: .leading) {
                 Rectangle()
-                    .frame(width: 200, height: 10)
+                    .frame(width: 150, height: 10)
                     .opacity(0.3)
                     .foregroundColor(.gray)
                     .padding(.trailing, 10)
                 Rectangle()
                     .frame(width: CGFloat(attackValue), height: 10)
-                    .foregroundColor(.red)
+                    .foregroundColor(getColorBaseStats(value: attackValue))
                     .padding(.trailing, 10)
             }
         }
@@ -94,38 +96,67 @@ struct BaseStatsPokemonView: View {
                 .padding(.trailing, 20)
             ZStack(alignment: .leading) {
                 Rectangle()
-                    .frame(width: 200, height: 10)
+                    .frame(width: 150, height: 10)
                     .opacity(0.3)
                     .foregroundColor(.gray)
                     .padding(.trailing, 10)
                 Rectangle()
                     .frame(width: CGFloat(defenseValue), height: 10)
-                    .foregroundColor(.green)
+                    .foregroundColor(getColorBaseStats(value: defenseValue))
                     .padding(.trailing, 10)
             }
         }
         .padding(.bottom, 232)
     }
+    
+    private func getColorBaseStats(value: Int) -> Color {
+        if value > 75 {
+            return Color.green
+        } else {
+            return Color.red
+        }
+    }
 }
 
 struct EvolutionsPokemonView: View {
+    var pokemon: Pokemon
+    var listPokemons: [Pokemon]
     
     var body : some View {
-        Image(systemName: "car")
+        KFImage(URL(string: getImageEvolutionPokemon(id: pokemon.evolutionChain?[0].id ?? "", listPokemons: listPokemons)))
             .resizable()
             .scaledToFit()
             .frame(width: 100, height: 100)
-        Text("Ivysaur").bold()
-        Image(systemName: "car")
+        Text(pokemon.evolutionChain?[0].name.capitalized ?? "").bold()
+        Image(checkPokemonEvolution(pokemon: pokemon))
             .resizable()
             .scaledToFit()
             .frame(width: 50, height: 50)
-        Image(systemName: "car")
-            .resizable()
-            .scaledToFit()
-            .frame(width: 100, height: 100)
-        Text("Venosaur").bold()
-            .padding(.bottom, -12)
+        if pokemon.evolutionChain?.count ?? 0 > 1  {
+            KFImage(URL(string: getImageEvolutionPokemon(id: pokemon.evolutionChain?[1].id ?? "", listPokemons: listPokemons)))
+                .resizable()
+                .scaledToFit()
+                .frame(width: 100, height: 100)
+            Text(pokemon.evolutionChain?[1].name.capitalized ?? "").bold()
+                .padding(.bottom, -12)
+        }
+    }
+    
+    private func checkPokemonEvolution(pokemon: Pokemon) -> String {
+        if pokemon.evolutionChain?[0] != nil {
+            return "ArrowDown"
+        } else {
+            return "PontodeInterrogacao"
+        }
+    }
+    
+    private func getImageEvolutionPokemon(id: String, listPokemons: [Pokemon]) -> String {
+        let idInt = Int(id)
+        if let pokemonFilter = listPokemons.first(where: { $0.id == idInt}) {
+            return pokemonFilter.imageUrl
+        } else {
+            return ""
+        }
     }
 }
 

@@ -11,7 +11,8 @@ import Kingfisher
 struct PokemonDetailsView: View {
     let pokemon: Pokemon
     let getBackgroundColor: Color
-    @State var selected = 3
+    let viewModel = PokemonCellViewModel()
+    @State var selected = 1
     
     init(pokemon: Pokemon) {
         self.pokemon = pokemon
@@ -37,6 +38,10 @@ struct PokemonDetailsView: View {
                     .cornerRadius(30)
                     .padding(.bottom, -350)
                 VStack {
+                    Text(pokemon.name.capitalized)
+                        .font(.largeTitle).bold()
+                        .foregroundColor(.white)
+                        .padding(.leading, -175)
                     HStack {
                         TypeAndIdView(text: pokemon.type)
                         Spacer()
@@ -47,11 +52,11 @@ struct PokemonDetailsView: View {
                         .padding(.bottom,20)
                     switch selected {
                     case 1:
-                        AboutPokemonView(valueHeight: "10", valueWeight: "30")
+                        AboutPokemonView(valueHeight: pokemon.height, valueWeight: pokemon.weight, descriptionPokemon: pokemon.description)
                     case 2:
-                        BaseStatsPokemonView(attackValue: 65, defenseValue: 120)
+                        BaseStatsPokemonView(attackValue: pokemon.attack, defenseValue: pokemon.defense)
                     default:
-                        EvolutionsPokemonView()
+                        EvolutionsPokemonView(pokemon: pokemon, listPokemons: viewModel.pokemonsList)
                     }
                     
                 }
@@ -61,7 +66,8 @@ struct PokemonDetailsView: View {
                     .frame(width: 200)
                     .padding(.bottom, 300)
             }
-            .navigationTitle("Bulbasaur")
+            .navigationTitle(pokemon.name)
+            .navigationBarHidden(true)
         }
     }
 }

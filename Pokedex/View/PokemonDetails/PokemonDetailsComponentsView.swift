@@ -29,34 +29,27 @@ struct AboutPokemonView : View {
     var descriptionPokemon: String
     
     var body : some View {
-      
-        Text("Description")
-            .font(.largeTitle)
-        
-        Text(descriptionPokemon)
-            .foregroundColor(.gray)
-            .multilineTextAlignment(.center)
-            .frame(maxHeight: 150)
-            
-        
-        HStack {
-            Text("Heigth")
+        VStack {
+            Text("Description")
+                .font(.largeTitle)
+            Text(descriptionPokemon)
                 .foregroundColor(.gray)
-                .padding(.leading, 40)
-                .padding(.top, 30)
+                .multilineTextAlignment(.center)
             Spacer()
-            Text(String(valueHeight))
-                .padding(.trailing, 150)
-                .padding(.top, 30)
-        }
-        .padding(.bottom, 5)
-        HStack {
-            Text("Weigth")
-                .foregroundColor(.gray)
-                .padding(.leading, 40)
-            Spacer()
-            Text(String(valueWeight))
-                .padding(.trailing, 150)
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("Heigth")
+                        .foregroundColor(.gray)
+                        .padding(.leading, -150)
+                    Text(String(valueHeight))
+                }
+                HStack {
+                    Text("Weigth")
+                        .foregroundColor(.gray)
+                        .padding(.leading, -150)
+                    Text(String(valueWeight))
+                }
+            }
         }
     }
 }
@@ -64,49 +57,51 @@ struct AboutPokemonView : View {
 struct BaseStatsPokemonView: View {
     var attackValue: Int
     var defenseValue: Int
-
+    
     var body: some View {
-        HStack {
-            Text("Attack")
-                .foregroundColor(.gray)
-                .padding(.leading, 20)
-            Spacer()
-            Text(String(attackValue))
-                .padding(.trailing, 20)
-            ZStack(alignment: .leading) {
-                Rectangle()
-                    .frame(width: 150, height: 10)
-                    .opacity(0.3)
+        
+        VStack {
+            HStack {
+                Text("Attack")
                     .foregroundColor(.gray)
-                    .padding(.trailing, 10)
-                Rectangle()
-                    .frame(width: CGFloat(attackValue), height: 10)
-                    .foregroundColor(getColorBaseStats(value: attackValue))
-                    .padding(.trailing, 10)
+                    .padding(.leading, 20)
+                Spacer()
+                Text(String(attackValue))
+                    .padding(.trailing, 20)
+                ZStack(alignment: .leading) {
+                    Rectangle()
+                        .frame(width: 150, height: 10)
+                        .opacity(0.3)
+                        .foregroundColor(.gray)
+                        .padding(.trailing, 10)
+                    Rectangle()
+                        .frame(width: CGFloat(attackValue), height: 10)
+                        .foregroundColor(getColorBaseStats(value: attackValue))
+                        .padding(.trailing, 10)
+                }
+            }
+            HStack {
+                Text("Defense")
+                    .foregroundColor(.gray)
+                    .padding(.leading, 20)
+                Spacer()
+                Text(String(defenseValue))
+                    .padding(.trailing, 20)
+                ZStack(alignment: .leading) {
+                    Rectangle()
+                        .frame(width: 150, height: 10)
+                        .opacity(0.3)
+                        .foregroundColor(.gray)
+                        .padding(.trailing, 10)
+                    Rectangle()
+                        .frame(width: CGFloat(defenseValue), height: 10)
+                        .foregroundColor(getColorBaseStats(value: defenseValue))
+                        .padding(.trailing, 10)
+                }
             }
         }
-        .padding(.top, 30)
-        .padding(.bottom, 5)
-        HStack {
-            Text("Defense")
-                .foregroundColor(.gray)
-                .padding(.leading, 20)
-            Spacer()
-            Text(String(defenseValue))
-                .padding(.trailing, 20)
-            ZStack(alignment: .leading) {
-                Rectangle()
-                    .frame(width: 150, height: 10)
-                    .opacity(0.3)
-                    .foregroundColor(.gray)
-                    .padding(.trailing, 10)
-                Rectangle()
-                    .frame(width: CGFloat(defenseValue), height: 10)
-                    .foregroundColor(getColorBaseStats(value: defenseValue))
-                    .padding(.trailing, 10)
-            }
-        }
-        .padding(.bottom, 232)
+        .padding(.top, 10)
+        Spacer()
     }
     
     private func getColorBaseStats(value: Int) -> Color {
@@ -114,48 +109,6 @@ struct BaseStatsPokemonView: View {
             return Color.green
         } else {
             return Color.red
-        }
-    }
-}
-
-struct EvolutionsPokemonView: View {
-    var pokemon: Pokemon
-    var listPokemons: [Pokemon]
-    
-    var body : some View {
-        KFImage(URL(string: getImageEvolutionPokemon(id: pokemon.evolutionChain?[0].id ?? "", listPokemons: listPokemons)))
-            .resizable()
-            .scaledToFit()
-            .frame(width: 100, height: 100)
-        Text(pokemon.evolutionChain?[0].name.capitalized ?? "").bold()
-        Image(checkPokemonEvolution(pokemon: pokemon))
-            .resizable()
-            .scaledToFit()
-            .frame(width: 50, height: 50)
-        if pokemon.evolutionChain?.count ?? 0 > 1  {
-            KFImage(URL(string: getImageEvolutionPokemon(id: pokemon.evolutionChain?[1].id ?? "", listPokemons: listPokemons)))
-                .resizable()
-                .scaledToFit()
-                .frame(width: 100, height: 100)
-            Text(pokemon.evolutionChain?[1].name.capitalized ?? "").bold()
-                .padding(.bottom, -12)
-        }
-    }
-    
-    private func checkPokemonEvolution(pokemon: Pokemon) -> String {
-        if pokemon.evolutionChain?[0] != nil {
-            return "ArrowDown"
-        } else {
-            return "PontodeInterrogacao"
-        }
-    }
-    
-    private func getImageEvolutionPokemon(id: String, listPokemons: [Pokemon]) -> String {
-        let idInt = Int(id)
-        if let pokemonFilter = listPokemons.first(where: { $0.id == idInt}) {
-            return pokemonFilter.imageUrl
-        } else {
-            return ""
         }
     }
 }

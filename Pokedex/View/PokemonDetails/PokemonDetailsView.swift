@@ -11,7 +11,8 @@ import Kingfisher
 struct PokemonDetailsView: View {
     let pokemon: Pokemon
     let getBackgroundColor: Color
-    let viewModel = PokemonCellViewModel()
+    private let gridItems = [GridItem(.flexible())]
+    private let viewModel = PokemonCellViewModel()
     @State var selected = 1
     
     init(pokemon: Pokemon) {
@@ -42,23 +43,33 @@ struct PokemonDetailsView: View {
                         .font(.largeTitle).bold()
                         .foregroundColor(.white)
                         .padding(.leading, -175)
+                        .padding(.top, 10)
                     HStack {
                         TypeAndIdView(text: pokemon.type)
                         Spacer()
                         TypeAndIdView(text: "#\(pokemon.id)")
                     }
                     Spacer()
-                    PickerView(selected: self.$selected)
-                        .padding(.bottom,20)
-                    switch selected {
-                    case 1:
-                        AboutPokemonView(valueHeight: pokemon.height, valueWeight: pokemon.weight, descriptionPokemon: pokemon.description)
-                    case 2:
-                        BaseStatsPokemonView(attackValue: pokemon.attack, defenseValue: pokemon.defense)
-                    default:
-                        EvolutionsPokemonView(pokemon: pokemon, listPokemons: viewModel.pokemonsList)
-                    }
-                    
+                    VStack {
+                        PickerView(selected: self.$selected)
+                        switch selected {
+                        case 1:
+                            AboutPokemonView(valueHeight: pokemon.height, valueWeight: pokemon.weight, descriptionPokemon: pokemon.description)
+                        case 2:
+                            BaseStatsPokemonView(attackValue: pokemon.attack, defenseValue: pokemon.defense)
+                        default:
+                            ScrollView {
+                                LazyVGrid(columns: gridItems, spacing: 5) {
+                                    if let evolutionsPokemons = pokemon.evolutionChain {
+                                        ForEach(evolutionsPokemons) { pokemon in
+                                            EvolutionPokemonCell(evolutionPokemon: getImageEvolutionPokemon(id: pokemon.id, listPokemons: viewModel.pokemonsList))
+                                        }
+                                    }
+                                }
+                            }
+                            Spacer()
+                        }
+                    }.frame(width: 350, height: 370)
                 }
                 KFImage(URL(string: pokemon.imageUrl))
                     .resizable()
@@ -68,6 +79,15 @@ struct PokemonDetailsView: View {
             }
             .navigationTitle(pokemon.name)
             .navigationBarHidden(true)
+        }
+    }
+    
+    private func getImageEvolutionPokemon(id: String, listPokemons: [Pokemon]) -> Pokemon {
+        let idInt = Int(id)
+        if let pokemonFilter = listPokemons.first(where: { $0.id == idInt}) {
+            return pokemonFilter
+        } else {
+            return MOCK_POCKEMON[0]
         }
     }
 }

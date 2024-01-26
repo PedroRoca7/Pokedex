@@ -87,7 +87,7 @@ struct PokemonDetailsView: View {
         if let pokemonFilter = listPokemons.first(where: { $0.id == idInt}) {
             return pokemonFilter
         } else {
-            return MOCK_POCKEMON[0]
+            return MOCK_POCKEMON[1]
         }
     }
 }

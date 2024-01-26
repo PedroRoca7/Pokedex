@@ -27,4 +27,5 @@ struct EvolutionPokemon: Codable, Identifiable {
 
 let MOCK_POCKEMON: [Pokemon] = [
     .init(id: 0, name: "Bulbasaur", imageUrl: "https://firebasestorage.googleapis.com/v0/b/pokedex-bb36f.appspot.com/o/pokemon_images%2F2CF15848-AAF9-49C0-90E4-28DC78F60A78?alt=media&token=15ecd49b-89ff-46d6-be0f-1812c948e334", type: "poison",attack: 49, defense: 49, description: "Bulbasaur is a Pokemon", height: 7, weight: 69, evolutionChain: nil),
+    .init(id: 1, name: "??", imageUrl: "PontodeInterrogacao", type: "??",attack: 0, defense: 0, description: "??", height: 0, weight: 0, evolutionChain: nil),
 ]

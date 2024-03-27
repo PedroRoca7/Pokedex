@@ -21,13 +21,13 @@ A aplicação possui dependências externas (SPM - Kingfisher).
 
 ## Demonstração
 <p align="center">
-    <img width=24% src="https://github.com/PedroRoca7/Pokedex/blob/main/File-Images/pokemonsScreen.png"/>
-    <img width=24% src="https://github.com/PedroRoca7/Pokedex/blob/main/File-Images/BulbasaurScreen.png"/>
-    <img width=24% src="https://github.com/PedroRoca7/Pokedex/blob/main/File-Images/BulbasaurScreen1.png"/>
-    <img width=24% src="https://github.com/PedroRoca7/Pokedex/blob/main/File-Images/BulbasaurScreen2.png"/>
-    <img width=24% src="https://github.com/PedroRoca7/Pokedex/blob/main/File-Images/GastlyScreen2.png"/>
-    <img width=24% src="https://github.com/PedroRoca7/Pokedex/blob/main/File-Images/JolteonScreen.png"/>
-    <img width=24% src="https://github.com/PedroRoca7/Pokedex/blob/main/File-Images/MewtwoScreen1.png"/>
+    <img width=30% src="https://github.com/PedroRoca7/Pokedex/blob/main/File-Images/pokemonsScreen.png"/>
+    <img width=30% src="https://github.com/PedroRoca7/Pokedex/blob/main/File-Images/BulbasaurScreen.png"/>
+    <img width=30% src="https://github.com/PedroRoca7/Pokedex/blob/main/File-Images/BulbasaurScreen1.png"/>
+    <img width=30% src="https://github.com/PedroRoca7/Pokedex/blob/main/File-Images/BulbasaurScreen2.png"/>
+    <img width=30% src="https://github.com/PedroRoca7/Pokedex/blob/main/File-Images/GastlyScreen2.png"/>
+    <img width=30% src="https://github.com/PedroRoca7/Pokedex/blob/main/File-Images/JolteonScreen.png"/>
+    <img width=30% src="https://github.com/PedroRoca7/Pokedex/blob/main/File-Images/MewtwoScreen1.png"/>
 </p>
 
 ## Idiomas disponíveis
